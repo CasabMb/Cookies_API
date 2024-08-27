@@ -1,3 +1,4 @@
+// Routes/ClientRoutes.js
 const express = require ('express');
 const ClientController = require ('../Controllers/ClientController');
 const AuthenticateController = require('../Controllers/authenticateController');
@@ -10,7 +11,7 @@ router.get ('/', authenticateController.authenticateToken,(request, result)=>{
 router.get ('/:id', authenticateController.authenticateToken,(request, result)=>{
     ClientController.getClientById(request, result)});
 
-    router.post('/', authenticateController.authenticateToken,(request, result)=>{
+    router.post('/',(request, result)=>{
         ClientController.addClient(request, result)});
     
     router.patch('/:id', authenticateController.authenticateToken,(request, result)=>{
@@ -21,6 +22,9 @@ router.get ('/:id', authenticateController.authenticateToken,(request, result)=>
 
     router.post('/login', (request, result)=>{
         AuthenticateController.login(request, result)});
+    
+    router.post('/register', (request, result)=>{
+        AuthenticateController.register(request, result)});
 
 
 

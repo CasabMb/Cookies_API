@@ -29,18 +29,27 @@ app.get('/',(request, result) =>{
 })
 
 // routes pour afficher les tables
+// app.use('/clients', clientRoutes);
+// app.use('/categories', authenticateController.authenticateToken, categorieRoutes);
+// app.use('/commandes',authenticateController.authenticateToken, commandeRoutes);
+// app.use('/produits', produitRoutes);
+// app.use('/detailscommandes',authenticateController.authenticateToken, detailscommandesRoutes);
+// app.use('/paiements',authenticateController.authenticateToken, paiementRoutes);
+// app.use('/livraisons', authenticateController.authenticateToken,livraisonRoutes);
+// app.use('/commentaires',authenticateController.authenticateToken, commentaireRoutes);
+
 app.use('/clients', clientRoutes);
 app.use('/categories', authenticateController.authenticateToken, categorieRoutes);
-app.use('/commandes',authenticateController.authenticateToken, commandeRoutes);
-app.use('/produits',authenticateController.authenticateToken, produitRoutes);
-app.use('/detailscommandes',authenticateController.authenticateToken, detailscommandesRoutes);
+app.use('/commandes', commandeRoutes);
+app.use('/produits', produitRoutes);
+app.use('/detailscommandes', detailscommandesRoutes);
 app.use('/paiements',authenticateController.authenticateToken, paiementRoutes);
 app.use('/livraisons', authenticateController.authenticateToken,livraisonRoutes);
-app.use('/commentaires',authenticateController.authenticateToken, commentaireRoutes);
-
+app.use('/commentaires', commentaireRoutes);
 
 
 
 app.listen (port, () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);
+    // console.log(`Server is running on http://192.168.1.32:${port}`);
 })

@@ -1,3 +1,4 @@
+// Controllers/CommandeController.js
 const CommandeService = require ('../Services/CommandeService');
 
 class CommandeControllers{
@@ -51,6 +52,17 @@ class CommandeControllers{
         } catch (error){
             result.status(500);
             result.json({error : "Il y a eu un probleme lors de la suppression de la commande"})
+        }
+    }
+
+    async getCommandesByClientId(request, result) {
+        try {
+            const commandes = await CommandeService.getCommandesByClientId(request.params.id);
+            result.json(commandes);
+        } catch (error) {
+            result.status(500);
+            console.log(error);
+            result.json({ message: "Il y a eu un problème lors de la récupération des commandes du client." });
         }
     }
 

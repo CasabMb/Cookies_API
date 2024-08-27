@@ -1,3 +1,4 @@
+// Routes/CommandeRoutes.js
 const express = require ('express');
 const CommandeController = require ('../Controllers/CommandeController');
 
@@ -18,5 +19,7 @@ router.delete('/:id',(request, result)=>{
     CommandeController.deleteCommande(request, result)});
 
 
+router.get('/client/:id', (request, result) => {
+    CommandeController.getCommandesByClientId(request, result)});
 
 module.exports = router;

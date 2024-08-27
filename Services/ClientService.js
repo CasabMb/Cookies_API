@@ -1,4 +1,7 @@
+// Services/ClientService.js
 const Client = require ('../Models/Client');
+const bcrypt = require('bcrypt');
+
 
 class ClientService{
     async getAllClients(){
@@ -22,15 +25,34 @@ class ClientService{
     async deleteClient(id){
         return await Client.destroy({where: {client_id: id}});
     }
-
+    
     async login(email, password){
         const client = await Client.findOne({where : {email : email}});
         // si mon client n'existe pas ou si le mdp de correspond pas 
+        console.log(await client.validatePassword(password));
         if (!client || !await client.validatePassword(password)){
             throw new Error("Email ou Password incorrect");
         }
         return client;
     }
+
+
+    async register({ nom, prenom, email, password }) {
+        try {
+            
+            // Create a new client
+            const newClient = await Client.create({
+                nom,
+                prenom,
+                email,
+                password
+            });
+            return newClient;
+        } catch (error) {
+            throw new Error("Une erreur est survenue lors de l'inscription");
+        }
+    }
+    
 }
 
 module.exports = new ClientService();

@@ -1,3 +1,4 @@
+// Controllers/ClientController.js
 const ClientService = require ('../Services/ClientService');
 
 class ClientController{
@@ -40,7 +41,7 @@ class ClientController{
             result.json(client);
         } catch (error){
             result.status(500);
-            result.json({error : "Il y a eu un probleme lors de la mise a jour du client"})
+            result.json({error : "Il y a eu un probleme lors de la mise a jour du client",details: error.message })
         }
     }
 

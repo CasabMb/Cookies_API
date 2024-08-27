@@ -16,6 +16,10 @@ Commentaire.init({
         type : DataTypes.INTEGER,
         allowNull : false
     },
+    titre : {
+        type : DataTypes.TEXT,
+        allowNull : false
+    },
     commentaire : {
         type : DataTypes.TEXT,
         allowNull : false

@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 class Client extends Model{
     async validatePassword(password){
         return await bcrypt.compare(password, this.password);
+        
     }
 }
 
@@ -25,20 +26,20 @@ Client.init({
     },
     adresse : {
         type : DataTypes.STRING,
-        allowNull : false
+        // allowNull : false
     },
     code_postal : {
         type : DataTypes.CHAR,
-        allowNull : false,
+        // allowNull : false,
         length : 7
     },
     ville : {
         type : DataTypes.STRING,
-        allowNull : false
+        // allowNull : false
     },
     phone : {
         type : DataTypes.CHAR,
-        allowNull : false,
+        // allowNull : false,
         length : 13,
         unique : true
     },
@@ -53,7 +54,7 @@ Client.init({
     },
     date_inscription : {
         type : DataTypes.DATE,
-        allowNull : false
+        // allowNull : false
     }
 },{
     sequelize,
@@ -66,7 +67,7 @@ Client.init({
             client.password = await bcrypt.hash(client.password, 10)
             },
         beforeUpdate : async (client) =>{
-            if (client.change('password')){
+            if (client.changed('password')){
                 client.password = await bcrypt.hash(client.password, 10)
             }
         }

@@ -1,3 +1,4 @@
+// Services/CommandeService.js
 const Commande = require ('../Models/Commande');
 
 class CommandeService{
@@ -19,6 +20,13 @@ class CommandeService{
 
     async deleteCommande(id){
         return await Commande.destroy({where: {commande_id: id}});
+    }
+
+    async getCommandesByClientId(id) {
+        return await Commande.findAll({
+            where: { client_id: id },
+            include: 'Clients'
+        });
     }
 
 }

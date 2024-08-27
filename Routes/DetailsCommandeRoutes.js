@@ -1,3 +1,4 @@
+// Routes/DetailsCommandeRoutes.js
 const express = require ('express');
 const DetailsCommandeController = require('../Controllers/DetailsCommandeController');
 
@@ -17,4 +18,9 @@ router.patch('/:id',(request, result)=>{
 
 router.delete('/:id',(request, result)=>{
     DetailsCommandeController.deleteDetailsCommande(request, result)});
+
+
+router.get('/commande/:id', (request, result) => {
+    DetailsCommandeController.getDetailsCommandeByCommandeId(request, result)});
+
 module.exports = router;
