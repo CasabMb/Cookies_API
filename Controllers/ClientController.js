@@ -54,6 +54,7 @@ class ClientController{
             result.json({error : "Il y a eu un probleme lors de la suppression du client"})
         }
     }
+    
 }
 
 module.exports = new ClientController();

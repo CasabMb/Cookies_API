@@ -8,6 +8,8 @@ const detailscommandesRoutes = require('./Routes/DetailsCommandeRoutes');
 const paiementRoutes = require('./Routes/PaiementRoutes');
 const livraisonRoutes = require('./Routes/LivraisonRoutes');
 const commentaireRoutes = require('./Routes/CommentaireRoutes');
+const favorisRoutes = require('./Routes/FavorisRoutes');
+const panierRoutes = require('./Routes/PanierRoutes');
 
 
 
@@ -46,6 +48,8 @@ app.use('/detailscommandes', detailscommandesRoutes);
 app.use('/paiements',authenticateController.authenticateToken, paiementRoutes);
 app.use('/livraisons', authenticateController.authenticateToken,livraisonRoutes);
 app.use('/commentaires', commentaireRoutes);
+app.use('/favoris', favorisRoutes);
+app.use('/paniers', panierRoutes);
 
 
 

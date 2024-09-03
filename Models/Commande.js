@@ -39,6 +39,11 @@ Commande.init({
             key : 'client_id'
         }
             
+    },
+    montant_Final: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        defaultValue: 0
     }
 },{
     sequelize,

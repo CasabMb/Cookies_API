@@ -3,22 +3,20 @@ const ClientService = require('../Services/ClientService');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config.json');
 const Client = require('../Models/Client');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 class AuthenticateController {
     async login(request, result) {
         try {
             const { email, password } = request.body;
-
             if (!email || !password) {
                 return result.status(400).json({ error: "Email et mot de passe requis" });
             }
-
             const client = await ClientService.login(email, password);
-
             if (!client) {
                 return result.status(401).json({ error: "Identifiants incorrects" });
             }
+            // result.json({token : this.generateToken(client)});
 
             const token = this.generateToken(client);
             return result.json({ token });
@@ -30,7 +28,7 @@ class AuthenticateController {
 
     async register(request, result) {
         try {
-            const { nom, prenom, email, password } = request.body;
+            const { nom, prenom, email, password, date_inscription  } = request.body;
 
             if (!nom || !prenom || !email || !password) {
                 return result.status(400).json({ error: "Tous les champs sont requis" });
@@ -45,7 +43,8 @@ class AuthenticateController {
                 nom,
                 prenom,
                 email,
-                password
+                password,
+                date_inscription
             });
 
             return result.status(201).json(newClient);
