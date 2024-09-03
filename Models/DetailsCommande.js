@@ -46,12 +46,10 @@ DetailsCommande.init({
     timestamps : false
 })
 
-
 Produit.hasMany(DetailsCommande, {as: 'DetailsCommande', foreignKey : "produit_id"});
 DetailsCommande.belongsTo(Produit, {as: 'Produits', foreignKey: "produit_id"});
 
 Commande.hasMany(DetailsCommande, {as: 'DetailsCommande', foreignKey : "commande_id"});
 DetailsCommande.belongsTo(Commande, {as: 'Commandes', foreignKey: "commande_id"});
-
 
 module.exports = DetailsCommande;

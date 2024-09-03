@@ -1,4 +1,3 @@
-// Services/FavorisService.js
 const Favoris = require('../Models/Favoris');
 const Client = require('../Models/Client'); 
 const Produit = require('../Models/Produit'); 
@@ -11,10 +10,7 @@ class FavorisService {
 
     async deleteFromFavori(client_id, produit_id) {
         return await Favoris.destroy({
-            where: {
-                client_id,
-                produit_id
-            }
+            where: {client_id,produit_id}
         });
     }
 
@@ -26,7 +22,6 @@ class FavorisService {
             ]
         });
     }
-    
 }
 
 module.exports = new FavorisService();

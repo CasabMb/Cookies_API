@@ -1,11 +1,8 @@
-// Controllers/PanierController.js
 const PanierService = require('../Services/PanierService');
 
 class PanierController {
-    // Ajouter un produit aux Panier
     async addToPanier(req, res) {
         const { client_id, produit_id, quantite } = req.body;
-        console.log(req.body); 
         try {
             const panier = await PanierService.addToPanier({ client_id, produit_id, quantite });
             res.status(201).json(panier);
@@ -14,7 +11,6 @@ class PanierController {
         }
     }
 
-    // Supprimer un produit des Panier
     async removeFromPanier(req, res) {
         const { client_id, produit_id} = req.params;
         try {
@@ -25,7 +21,6 @@ class PanierController {
         }
     }
 
-    // Récupérer tous les Panier d'un client
     async getPanier(req, res) {
         const { client_id } = req.params;
         try {
@@ -51,7 +46,7 @@ class PanierController {
             res.status(500).json({ error: error.message });
         }
     }
-
 }
-
 module.exports = new PanierController();
+
+

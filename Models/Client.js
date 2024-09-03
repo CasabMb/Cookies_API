@@ -5,10 +5,8 @@ const bcrypt = require('bcrypt');
 class Client extends Model{
     async validatePassword(password){
         return await bcrypt.compare(password, this.password);
-        
     }
 }
-
 
 Client.init({
     client_id : {
@@ -55,6 +53,9 @@ Client.init({
     date_inscription : {
         type : DataTypes.DATE,
         // allowNull : false
+    },
+    role : {
+        type : DataTypes.STRING,
     }
 },{
     sequelize,

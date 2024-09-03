@@ -17,5 +17,4 @@ router.patch('/:id',(request, result)=>{
 router.delete('/:id',(request, result)=>{
     ProduitController.deleteProduit(request, result)});
 
-
 module.exports = router;

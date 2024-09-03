@@ -1,4 +1,3 @@
-// Controllers/CommandeController.js
 const CommandeService = require ('../Services/CommandeService');
 
 class CommandeControllers{
@@ -65,8 +64,6 @@ class CommandeControllers{
             result.json({ message: "Il y a eu un problème lors de la récupération des commandes du client." });
         }
     }
-
-
 }
 
 module.exports = new CommandeControllers();

@@ -52,7 +52,6 @@ class ProduitController{
             result.json({error : "Il y a eu un probleme lors de la suppression du produit"})
         }
     }
-
 }
 
 module.exports = new ProduitController();

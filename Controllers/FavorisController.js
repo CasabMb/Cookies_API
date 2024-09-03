@@ -1,8 +1,7 @@
-// Controllers/FavorisController.js
 const FavorisService = require('../Services/FavorisService');
 
 class FavorisController {
-    // Ajouter un produit aux favoris
+
     async addToFavori(req, res) {
         const { client_id, produit_id } = req.body;
         console.log(req.body); 
@@ -14,7 +13,6 @@ class FavorisController {
         }
     }
 
-    // Supprimer un produit des favoris
     async removeFromFavori(req, res) {
         const { client_id, produit_id } = req.params;
         try {
@@ -25,7 +23,6 @@ class FavorisController {
         }
     }
 
-    // Récupérer tous les favoris d'un client
     async getFavoris(req, res) {
         const { client_id } = req.params;
         try {
@@ -38,3 +35,4 @@ class FavorisController {
 }
 
 module.exports = new FavorisController();
+

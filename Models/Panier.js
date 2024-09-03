@@ -1,11 +1,9 @@
-// Models/Favoris.js
 const {Model, DataTypes } = require ("sequelize");
 const sequelize = require("../config/sequelize");
 const Client = require("./Client");
 const Produit = require("./Produit");
 
 class Paniers extends Model{
-
 }
 
 Paniers.init({
@@ -36,18 +34,19 @@ Paniers.init({
         type : DataTypes.INTEGER,
         allowNull : false
     }
-
 },{
     sequelize,
     modelName : "Panier",
     tableName : "Paniers",
     timestamps : false
 })
+
+// Relations entre les modèles
 Client.hasMany(Paniers, {as: 'Paniers', foreignKey : 'client_id'});
 Paniers.belongsTo(Client, {as: 'Clients', foreignKey : 'client_id'});
 
 Produit.hasMany(Paniers, {as: 'Paniers', foreignKey : 'produit_id'});
 Paniers.belongsTo(Produit, {as: 'Produits', foreignKey : 'produit_id'});
 
-
 module.exports = Paniers;
+

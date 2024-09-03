@@ -1,4 +1,3 @@
-// Services/DetailsCommandeService.js
 const DetailsCommande = require ('../Models/DetailsCommande');
 const Produit = require('../Models/Produit'); 
 const Commande = require('../Models/Commande');
@@ -11,7 +10,6 @@ class DetailsCommandeService{
     async getDetailsCommandeById(details_commande_id){
         return await DetailsCommande.findByPk(details_commande_id, {include : ['Produits', 'Commandes']});
     }
-
 
     async addDetailsCommande(detailsCommande){
         return await DetailsCommande.create(detailsCommande);
@@ -27,19 +25,13 @@ class DetailsCommandeService{
 
     async getDetailsCommandeByCommandeId(commande_id) {
         return await DetailsCommande.findAll({
-            where: { commande_id: commande_id }, // Filtre sur la commande spécifique
+            where: { commande_id: commande_id },
             include: [
-                {
-                    model: Produit,
-                    as: 'Produits' // Inclure les détails des produits associés
-                },
-                {
-                    model: Commande,
-                    as: 'Commandes' // Inclure les détails de la commande
-                }
+                {model: Produit,as: 'Produits' },
+                {model: Commande,as: 'Commandes' }
             ]
         });
-
     }
 }
+
 module.exports = new DetailsCommandeService();

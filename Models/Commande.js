@@ -37,8 +37,7 @@ Commande.init({
         references : {
             model : 'Client',
             key : 'client_id'
-        }
-            
+        }    
     },
     montant_Final: {
         type: DataTypes.DECIMAL(10, 2),
@@ -54,6 +53,5 @@ Commande.init({
 
 Client.hasMany(Commande, {as: 'Commandes', foreignKey : 'client_id'});
 Commande.belongsTo(Client, {as: 'Clients', foreignKey : 'client_id'});
-
 
 module.exports = Commande;

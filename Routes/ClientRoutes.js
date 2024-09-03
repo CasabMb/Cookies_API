@@ -1,11 +1,9 @@
-// Routes/ClientRoutes.js
 const express = require ('express');
 const ClientController = require ('../Controllers/ClientController');
-const AuthenticateController = require('../Controllers/authenticateController');
 const authenticateController = require('../Controllers/authenticateController');
 
 const router = express.Router();
-router.get ('/', authenticateController.authenticateToken,(request, result)=>{
+router.get ('/', authenticateController.authenticateToken, authenticateController.adminMiddleware,(request, result)=>{
     ClientController.getAllClients(request, result)});
 
 router.get ('/:id', authenticateController.authenticateToken,(request, result)=>{
@@ -21,11 +19,9 @@ router.get ('/:id', authenticateController.authenticateToken,(request, result)=>
         ClientController.deleteClient(request, result)});
 
     router.post('/login', (request, result)=>{
-        AuthenticateController.login(request, result)});
+        authenticateController.login(request, result)});
     
     router.post('/register', (request, result)=>{
-        AuthenticateController.register(request, result)});
-
-
+        authenticateController.register(request, result)});
 
 module.exports = router;

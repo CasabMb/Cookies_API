@@ -1,11 +1,9 @@
-// Models/Favoris.js
 const {Model, DataTypes } = require ("sequelize");
 const sequelize = require("../config/sequelize");
 const Client = require("./Client");
 const Produit = require("./Produit");
 
 class Favoris extends Model{
-
 }
 
 Favoris.init({

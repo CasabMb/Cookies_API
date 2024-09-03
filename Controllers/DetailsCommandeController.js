@@ -1,4 +1,3 @@
-// Controllers/DetailsCommandeController.js
 const DetailsCommandeService = require ('../Services/DetailsCommandeService');
 
 class DetailsCommandeController{
@@ -56,7 +55,6 @@ class DetailsCommandeController{
         }
     }
 
-     // Nouvelle méthode pour récupérer les détails de commande par commande_id
     async getDetailsCommandeByCommandeId(request, result) {
         try {
             const detailsCommandeByCommandeId = await DetailsCommandeService.getDetailsCommandeByCommandeId(request.params.id);
@@ -66,8 +64,7 @@ class DetailsCommandeController{
             console.log(error);
             result.json({ error: "Il y a eu un problème lors de la récupération des détails de commande pour cette commande" });
         }
-    }
-    
+    } 
 }
 
 module.exports = new DetailsCommandeController();

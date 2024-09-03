@@ -1,15 +1,13 @@
-// Services/ClientService.js
 const Client = require ('../Models/Client');
 const bcrypt = require('bcrypt');
-
 
 class ClientService{
     async getAllClients(){
         return await Client.findAll();
     }
 
-    async getClientById(user_id){
-        return await Client.findByPk(user_id);
+    async getClientById(client_id){
+        return await Client.findByPk(client_id);
     }
 
     async addClient(client){
@@ -36,7 +34,6 @@ class ClientService{
         return client;
     }
 
-
     async register({ nom, prenom, email, password }) {
         try {
             
@@ -51,6 +48,11 @@ class ClientService{
         } catch (error) {
             throw new Error("Une erreur est survenue lors de l'inscription");
         }
+    }
+
+    async isAdmin(client_id) {
+        const client = await Client.findByPk(client_id);
+        return client && client.role === 'administrateur';
     }
     
 }

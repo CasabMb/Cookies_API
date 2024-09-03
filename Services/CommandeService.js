@@ -1,4 +1,3 @@
-// Services/CommandeService.js
 const Commande = require ('../Models/Commande');
 
 class CommandeService{
@@ -28,8 +27,6 @@ class CommandeService{
             include: 'Clients'
         });
     }
-
 }
-
 
 module.exports = new CommandeService();

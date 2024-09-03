@@ -1,6 +1,6 @@
 const {Model, DataTypes } = require ("sequelize");
 const sequelize = require("../config/sequelize");
-const Commande = require("./Commande");
+const Paiement = require("./Paiement");
 
 class Livraison extends Model{
 }
@@ -35,13 +35,13 @@ Livraison.init({
         type : DataTypes.DATE,
         allowNull : false
     },
-    commande_id : {
+    paiement_id : {
         type : DataTypes.INTEGER,
         allowNull : false,
 
         references : {
-            model : 'Commande',
-            key : 'commande_id'
+            model : 'Paiement',
+            key : 'paiement_id'
         }
     }
 },{
@@ -51,7 +51,7 @@ Livraison.init({
     timestamps : false
 })
 
-Commande.hasMany(Livraison, {as: 'Livraison', foreignKey : "commande_id"});
-Livraison.belongsTo(Commande, {as: 'Commandes', foreignKey: "commande_id"});
+Paiement.hasMany(Livraison, {as: 'Livraison', foreignKey : "paiement_id"});
+Livraison.belongsTo(Paiement, {as: 'Paiements', foreignKey: "paiement_id"});
 
 module.exports = Livraison;

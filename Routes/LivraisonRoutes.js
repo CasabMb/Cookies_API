@@ -1,9 +1,10 @@
 const express = require ('express');
 const LivraisonController = require('../Controllers/LivraisonController');
+const authenticateController = require('../Controllers/authenticateController');
 
 const router = express.Router();
 
-router.get('/',(request, result)=>{
+router.get('/', authenticateController.adminMiddleware,(request, result)=>{
     LivraisonController.getAllLivraison(request, result)});
 
 router.get('/:id',(request, result)=>{
@@ -15,8 +16,7 @@ router.post('/',(request, result)=>{
 router.patch('/:id',(request, result)=>{
     LivraisonController.updateLivraison(request, result)});
 
-router.delete('/:id',(request, result)=>{
+router.delete('/:id', authenticateController.adminMiddleware,(request, result)=>{
     LivraisonController.deleteLivraison(request, result)});
-
 
 module.exports = router;

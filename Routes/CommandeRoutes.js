@@ -1,6 +1,6 @@
-// Routes/CommandeRoutes.js
 const express = require ('express');
 const CommandeController = require ('../Controllers/CommandeController');
+const authenticateController = require('../Controllers/authenticateController');
 
 const router = express.Router();
 router.get ('/', (request, result)=>{
@@ -12,10 +12,10 @@ router.get ('/:id', (request, result)=>{
 router.post('/',(request, result)=>{
     CommandeController.addCommande(request, result)});
 
-router.patch('/:id',(request, result)=>{
+router.patch('/:id', authenticateController.adminMiddleware,(request, result)=>{
     CommandeController.updateCommande(request, result)});
 
-router.delete('/:id',(request, result)=>{
+router.delete('/:id', authenticateController.adminMiddleware,(request, result)=>{
     CommandeController.deleteCommande(request, result)});
 
 

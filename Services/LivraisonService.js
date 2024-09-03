@@ -2,11 +2,11 @@ const Livraison = require('../Models/Livraison');
 
 class LivraisonService{
     async getAllLivraison(){
-        return await Livraison.findAll({include: 'Commandes'})
+        return await Livraison.findAll({include: 'Paiements'})
     }
 
     async getLivraisonById(livraison_id){
-        return await Livraison.findByPk(livraison_id, {include: 'Commandes'})
+        return await Livraison.findByPk(livraison_id, {include: 'Paiements'})
     }
 
     async addLivraison(livraison){

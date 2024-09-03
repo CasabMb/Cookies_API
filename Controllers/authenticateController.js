@@ -58,6 +58,7 @@ class AuthenticateController {
         const payload = {
             id: client.client_id,
             email: client.email,
+            role: client.role
         };
         return jwt.sign(payload, config.secret, { expiresIn: '2h' });
     }
@@ -78,6 +79,14 @@ class AuthenticateController {
             next();
         });
     }
+    
+    adminMiddleware = (request, result, next) => {
+        if (request.client.role !== 'administrateur') {
+            return result.status(403).json({ error: "Accès interdit" });
+        }
+        next();
+    }
+    
 }
 
 module.exports = new AuthenticateController();
