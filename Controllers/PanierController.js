@@ -46,6 +46,18 @@ class PanierController {
             res.status(500).json({ error: error.message });
         }
     }
+
+    async clearPanier(req, res) {
+        const { client_id } = req.params; // Récupération de client_id
+
+        try {
+            await PanierService.clearPanier(client_id);
+            return res.status(200).json({ message: 'Panier vidé avec succès.' });
+        } catch (error) {
+            console.error('Erreur lors de la suppression du panier:', error);
+            return res.status(500).json({ message: 'Erreur lors de la suppression du panier.' });
+        }
+    }
 }
 module.exports = new PanierController();
 
