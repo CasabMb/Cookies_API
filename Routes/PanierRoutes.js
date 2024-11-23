@@ -10,6 +10,8 @@ router.delete('/:client_id/:produit_id', PanierController.removeFromPanier);
 
 router.put('/:client_id/:produit_id', PanierController.updateQuantite);
 
+router.delete('/:client_id', PanierController.clearPanier);
+
 module.exports = router;
 
 

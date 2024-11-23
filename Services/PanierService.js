@@ -32,6 +32,15 @@ class PanierService {
             {where: {client_id,produit_id}}
         );
     }
+
+    async clearPanier(client_id) {
+        return await Panier.destroy({
+            where: {
+                client_id
+            }
+        });
+    }
+    
 }
 
 module.exports = new PanierService();
