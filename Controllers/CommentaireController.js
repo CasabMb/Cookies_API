@@ -52,6 +52,23 @@ class CommentaireController{
             result.json({error : "Il y a eu un probleme lors de la suppression du commentaire"})
         }
     }
+
+    async checkIfCommentExists(request, result) {
+        try {
+            const { clientId, commandeId } = request.params;
+            const commentaire = await CommentaireService.checkIfCommentExists(clientId, commandeId);
+    
+            if (commentaire) {
+                result.json({ hasCommented: true, commentaire });
+            } else {
+                result.json({ hasCommented: false });
+            }
+        } catch (error) {
+            console.error("Erreur lors de la récupération du commentaire :", error);
+            result.status(500).json({ error: "Erreur lors de la récupération du commentaire" });
+        }
+    }
+    
 }
 
 module.exports = new CommentaireController();

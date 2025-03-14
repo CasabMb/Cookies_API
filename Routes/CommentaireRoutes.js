@@ -19,4 +19,6 @@ router.patch('/:id',authenticateController.authenticateToken,(request, result)=>
 router.delete('/:id',authenticateController.authenticateToken,(request, result)=>{
     CommentaireController.deleteCommentaire(request, result)});
 
+router.get('/:clientId/:commandeId', CommentaireController.checkIfCommentExists);
+
 module.exports = router;

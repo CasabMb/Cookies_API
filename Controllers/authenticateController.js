@@ -60,7 +60,7 @@ class AuthenticateController {
             email: client.email,
             role: client.role
         };
-        return jwt.sign(payload, config.secret, { expiresIn: '2h' });
+        return jwt.sign(payload, config.secret, { expiresIn: '5d' });
     }
 
     authenticateToken(request, result, next) {

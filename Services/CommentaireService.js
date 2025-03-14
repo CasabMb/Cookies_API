@@ -20,6 +20,13 @@ class CommentaireService{
     async deleteCommentaire(id){
         return await Commentaire.destroy({where: {commentaire_id: id}});
     }
+
+    async checkIfCommentExists(clientId, commandeId) {
+        return await Commentaire.findOne({
+            where: { client_id: clientId, commande_id: commandeId }
+        });
+        
+    }    
 }
 
 module.exports = new CommentaireService();
